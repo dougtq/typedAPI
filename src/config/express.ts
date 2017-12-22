@@ -1,7 +1,7 @@
 import express from 'express'
 import { urlencoded, json } from 'body-parser'
 
-import { sucessInfo, generalInfo, errorsInfo } from './loggify'
+import logs from './loggify'
 import middlewares from './middleware'
 import env from './env'
 
@@ -9,7 +9,7 @@ const server = express()
 
 server.use(urlencoded({ extended: true }))
 server.use(json())
-server.use([sucessInfo, generalInfo, errorsInfo, middlewares])
+server.use([...logs, middlewares])
 
 server.set('port', env.values.PORT || 3000)
 
