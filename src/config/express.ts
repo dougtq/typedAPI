@@ -11,7 +11,7 @@ server.use(urlencoded({ extended: true }))
 server.use(json())
 server.use([...logs, middlewares])
 
-server.set('port', env.values.PORT || 3000)
+server.set('port', env.PORT || 3000)
 
 server.listen(server.set('port'), () => {
   console.log(`BACKEND is runing on http://localhost:${server.set('port')}`)
