@@ -5,16 +5,14 @@ import logs from './loggify'
 import middlewares from './middleware'
 import env from './env'
 
-const server = express()
+const app = express()
 
-server.use(urlencoded({ extended: true }))
-server.use(json())
-server.use([...logs, middlewares])
+app.set('port', env.PORT || 3000)
+app.use([urlencoded({ extended: true }), json()])
+app.use([...logs, middlewares])
 
-server.set('port', env.PORT || 3000)
-
-server.listen(server.set('port'), () => {
-  console.log(`BACKEND is runing on http://localhost:${server.set('port')}`)
+app.listen(app.set('port'), () => {
+  console.log(`BACKEND is runing on ${app.set('port')}`)
 })
 
-export default server
+export default app
