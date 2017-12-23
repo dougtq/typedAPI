@@ -1,5 +1,5 @@
 {
-  "name": "typeNode",
+  "name": "typed_api",
   "main": "index.js",
   "description": "",
   "version": "1.0.0",
@@ -7,8 +7,8 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "build-test": "tsc",
-    "lint": "npm run tslint && npm run eslint",
+    "build": "./node_modules/.bin/rimraf ./build && tsc",
+    "lint": "npm run tslint && npm run test",
     "eslint": "eslint 'test/**/*.js'",
     "test": "yarn eslint",
     "tslint": "tslint 'src/**/*.ts'",
