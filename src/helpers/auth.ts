@@ -1,10 +1,10 @@
 import { sign, verify, decode } from 'jsonwebtoken'
 
-const secretKey : String = process.env.SECRET || 
+const secretKey : string = process.env.SECRET || 
 (Math.floor((Math.random() * 9999) * Math.random())).toString()
 
 export default class Token {
-  createToken (payload : any) : String | Boolean {
+  createToken (payload : any) : string | Boolean {
     try {
       const token = sign(payload, secretKey)
       return `Bearer ${token}`
@@ -13,7 +13,7 @@ export default class Token {
     }
   }
 
-  verifyToken (token : String) : Boolean {
+  verifyToken (token : string) : Boolean {
     try {
       const valid = verify(this.getRawToken(token), secretKey.toString())
       return Boolean(valid)
@@ -22,7 +22,7 @@ export default class Token {
     }
   }
 
-  decodeToken (token : String) : Boolean | any  {
+  decodeToken (token : string) : Boolean | any  {
     try {
       const payLoad = decode(this.getRawToken(token))
       return payLoad
@@ -31,8 +31,8 @@ export default class Token {
     }
   }
 
-  getRawToken (token : String) : String {
-    const rawToken : String = token.split('Bearer').pop().trim()
+  getRawToken (token : string) : string {
+    const rawToken : string = token.split('Bearer').pop().trim()
     return rawToken
   }
 }
