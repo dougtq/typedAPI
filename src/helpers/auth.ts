@@ -1,11 +1,12 @@
 import { sign, verify, decode } from 'jsonwebtoken'
 
-const secretKey = process.env.SECRET || Math.floor((Math.random() * 9999) * Math.random())
+const secretKey : String = process.env.SECRET || 
+(Math.floor((Math.random() * 9999) * Math.random())).toString()
 
 export default class Token {
   createToken (payload : any) : String | Boolean {
     try {
-      const token = sign(payload, secretKey, { expiresIn: 60 * 60 * 15 })
+      const token = sign(payload, secretKey)
       return `Bearer ${token}`
     } catch (err) {
       return false
