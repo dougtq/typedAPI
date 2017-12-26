@@ -1,4 +1,4 @@
-import Mongo from './../db/conn-factory'
+import Mongo from './../db/connection'
 import { ObjectId } from 'mongoose'
 
 const User = new Mongo.Schema({
@@ -7,7 +7,8 @@ const User = new Mongo.Schema({
   },
   user: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   password: {
     type: String,
@@ -23,6 +24,10 @@ const User = new Mongo.Schema({
   profilePic: {
     type: Array,
     default: []
+  },
+  active: {
+    type: Boolean,
+    default: true
   },
   createdAt: {
     type: Date,
