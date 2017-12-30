@@ -1,11 +1,11 @@
 import { Router, Request, Response } from 'express'
 
-import Jwt from './../../helpers/auth'
+import userService from './../services/userServices'
 
 const User : Router = Router()
-const Auth : Jwt = new Jwt()
+const sUser : userService = new userService()
 
-User.get('/user', (req : Request, res : Response) => {
+User.get('/user/:_id', (req : Request, res : Response) => {
   res.send({
     sucess: true
   })
@@ -19,10 +19,13 @@ User.post('/user', (req : Request, res : Response) => {
 })
 
 User.post('/user/auth', (req : Request, res : Response) => {
-  const { username } = req.body
+  const { username, password } = req.body
+
+  if (!username || !password) 
+    return res.send({ success: false, message: 'Username or Password not found!' })
   
-  if (!username) return res.send({ success: false, message: 'Username not found!' })
-  res.setHeader('Authorization', Auth.createToken(username))
+  const data = sUser.logIn({ username, password })
+  res.setHeader('Authorization', data.token)
   res.send({
     sucess: true,
     message: 'You\'re logged in!'

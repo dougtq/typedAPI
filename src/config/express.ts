@@ -1,17 +1,22 @@
 import express = require('express')
+import helmet = require('helmet')
 import { urlencoded, json } from 'body-parser'
 
-import logs from './loggify'
-import middlewares from './middleware'
 import env from './env'
-import user from './../api/controllers/userController'
+import './../helpers/folders'
+import logs from './loggify'
+import './../db/connection'
+import middlewares from './middleware'
+import loader from './../api/loader'
 
 const app = express()
 
+
 app.set('port', env.PORT || 3000)
-app.use([urlencoded({ extended: true }), json()])
+app.use(helmet())
 app.use([...logs, middlewares])
-app.use('/api', [user])
+app.use([urlencoded({ extended: true }), json()])
+app.use('/api', [...loader()])
 
 app.listen(app.set('port'), () => {
   console.log(`BACKEND is runing on ${app.set('port')}`)
