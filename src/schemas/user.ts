@@ -2,13 +2,11 @@ import Mongo from './../db/connection'
 import { ObjectId } from 'mongoose'
 
 const User = new Mongo.Schema({
-  _id: {
-    type: ObjectId
-  },
   user: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    trim: true
   },
   password: {
     type: String,
