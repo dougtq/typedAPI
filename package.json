@@ -12,7 +12,7 @@
     "eslint": "eslint 'test/**/*.js'",
     "test": "yarn eslint",
     "tslint": "tslint 'src/**/*.ts'",
-    "prod": "node ./build/index.js"
+    "prod": "yarn build && node ./build/index.js"
   },
   "dependencies": {
     "axios": "0.17.1",
