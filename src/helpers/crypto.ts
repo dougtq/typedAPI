@@ -15,4 +15,9 @@ export default class Hasher {
       return false
     })
   }
+
+  static compareBcrypt (text, hashed  : string) : boolean {
+    return bcrypt.compare(text, hashed).then((result : boolean) => result)
+    .catch(err => undefined)
+  }
 }
