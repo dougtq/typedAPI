@@ -9,7 +9,7 @@ export default class userServices {
     const password : string = payload.password
     const username : string = payload.username
     const token : string | Boolean = auth.createToken({ username })
-    const cryptoPass : string = crypto.create(password)
+    const cryptoPass : string = Crypto.createMd5(password)
 
     return { token, pass: cryptoPass }
   }

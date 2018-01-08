@@ -2,7 +2,7 @@
   "name": "typed_api",
   "main": "index.js",
   "description": "",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "keywords": [],
   "author": "",
   "license": "MIT",
@@ -12,10 +12,11 @@
     "eslint": "eslint 'test/**/*.js'",
     "test": "yarn eslint",
     "tslint": "tslint 'src/**/*.ts'",
-    "prod": "node ./build/index.js"
+    "prod": "yarn build && node ./build/index.js"
   },
   "dependencies": {
     "axios": "0.17.1",
+    "bcrypt": "1.0.3",
     "bluebird": "3.5.1",
     "body-parser": "1.18.2",
     "dotenv": "4.0.0",
