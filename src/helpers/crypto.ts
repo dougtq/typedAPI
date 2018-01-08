@@ -7,6 +7,10 @@ export default class Hasher {
     .update(toBeHashed)
     .digest('hex')
   }
+  
+  static compareMd5 (text, hashed  : string) : boolean {
+    return (hashed === Hasher.createMd5(text))
+  }
 
   static createBcrypt (toBeHashed : string) : string {
     return bcrypt.hash(toBeHashed, 10)
@@ -20,4 +24,5 @@ export default class Hasher {
     return bcrypt.compare(text, hashed).then((result : boolean) => result)
     .catch(err => undefined)
   }
+
 }
