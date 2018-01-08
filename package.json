@@ -1,10 +1,10 @@
 {
   "name": "typed_api",
   "main": "index.js",
-  "description": "",
-  "version": "1.2.3",
+  "description": "Secure, simple and well structured typed API",
+  "version": "1.2.4-beta",
   "keywords": [],
-  "author": "",
+  "author": "Douglas Alves",
   "license": "MIT",
   "scripts": {
     "build": "./node_modules/.bin/rimraf ./build && tsc",
