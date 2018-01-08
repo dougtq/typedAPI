@@ -1,14 +1,14 @@
 import Auth from './../../helpers/auth'
 import Crypto from './../../helpers/crypto'
 
-const auth : Auth = new Auth()
-const crypto : Crypto = new Crypto()
 
 export default class userServices {
+  constructor () {}
+  
   logIn (payload) : any {
     const password : string = payload.password
     const username : string = payload.username
-    const token : string | Boolean = auth.createToken({ username })
+    const token : string | Boolean = Auth.createToken({ username })
     const cryptoPass : string = Crypto.createMd5(password)
 
     return { token, pass: cryptoPass }
