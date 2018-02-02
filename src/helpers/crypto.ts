@@ -1,5 +1,5 @@
 import { createHash } from 'crypto'
-import bcrypt = require('bcrypt')
+import bcrypt from 'bcrypt'
 
 export default class Hasher {
   static createMd5 (toBeHashed : string | Buffer) : string {
@@ -13,16 +13,11 @@ export default class Hasher {
   }
 
   static createBcrypt (toBeHashed : string) : string {
-    return bcrypt.hash(toBeHashed, 10)
-    .then(hashed => hashed)
-    .catch((err) => {
-      return false
-    })
+    return bcrypt.hashSync(toBeHashed, 10)
   }
 
   static compareBcrypt (text, hashed  : string) : boolean {
-    return bcrypt.compare(text, hashed).then((result : boolean) => result)
-    .catch(err => undefined)
+    return bcrypt.compareSync(text, hashed)
   }
 
 }
