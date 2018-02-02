@@ -13,7 +13,8 @@
     "lint": "npm run tslint && npm run lint:tests",
     "lint:tests": "eslint 'test/**/*.js'",
     "tslint": "tslint 'src/**/*.ts'",
-    "prod": "npm run build && node ./build/index.js"
+    "prod": "npm run build && npm run start",
+    "start": "node ./build/index.js"
   },
   "dependencies": {
     "axios": "0.17.1",
