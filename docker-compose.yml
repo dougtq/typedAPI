@@ -8,9 +8,9 @@ mongo:
   #   - MONGO_LOG_DIR=/dev/null
   #   - AUTH=no
   # command: mongod --smallfiles --logpath=/dev/null # --quiet
-api_todo:
+api_typed:
   build: .
-  container_name: api_todo
+  container_name: api_typed
   env_file: .env
   ports:
     - "3000:3000"
