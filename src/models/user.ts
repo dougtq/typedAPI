@@ -1,8 +1,7 @@
-import Mongo from './../db/connection'
-import { ObjectId } from 'mongoose'
+import Mongoose from './../db/connection'
 
-const User = new Mongo.Schema({
-  user: {
+const User = new Mongoose.Schema({
+  username: {
     type: String,
     required: true,
     unique: true,
@@ -37,4 +36,4 @@ const User = new Mongo.Schema({
   }
 })
 
-export default Mongo.model('user', User)
+export default Mongoose.model('user', User)
