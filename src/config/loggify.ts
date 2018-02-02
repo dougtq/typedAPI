@@ -2,9 +2,13 @@ import { createWriteStream, WriteStream } from 'fs'
 import { join } from 'path'
 import morgan = require('morgan')
 
-const sucessLog : WriteStream = createWriteStream(join(__dirname, '../../logs/success.log'), { flags: 'a' })
-const errorsLog : WriteStream = createWriteStream(join(__dirname, '../../logs/error.log'), { flags: 'a' })
-const generalLog : WriteStream = createWriteStream(join(__dirname, '../../logs/general.log'), { flags: 'a' })
+const success = '../../logs/success.log'
+const errors = '../../logs/errors.log'
+const general = '../../logs/general.log'
+
+const sucessLog : WriteStream = createWriteStream(join(__dirname, success), { flags: 'a' })
+const errorsLog : WriteStream = createWriteStream(join(__dirname, errors), { flags: 'a' })
+const generalLog : WriteStream = createWriteStream(join(__dirname, general), { flags: 'a' })
 
 const logFormat : String = ':method :url :status :res[content-length] - :response-time ms'
 

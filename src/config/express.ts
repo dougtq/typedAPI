@@ -18,8 +18,8 @@ app.use([...logs, middlewares])
 app.use([urlencoded({ extended: true }), json()])
 app.use('/api', [...loader()])
 
-app.listen(app.set('port'), () => {
-  console.log(`BACKEND is runing on ${app.set('port')}`)
+app.listen(app.get('port'), () => {
+  console.log(`BACKEND is runing on ${app.get('port')}`)
 })
 
 export default app

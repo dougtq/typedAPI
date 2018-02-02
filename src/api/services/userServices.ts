@@ -1,17 +1,25 @@
 import Auth from './../../helpers/auth'
 import Crypto from './../../helpers/crypto'
-
+import User from './../../models/user'
 
 export default class userServices {
-  constructor () {}
-  
   logIn (payload) : any {
+    
     const password : string = payload.password
     const username : string = payload.username
     const token : string | Boolean = Auth.createToken({ username })
-    const cryptoPass : string = Crypto.createMd5(password)
+    const pass : string = Crypto.createMd5(password)
 
-    return { token, pass: cryptoPass }
+    if (token) {
+      User.find({
+        username
+      }).then((person : any) => {  
+        if (person === {}) return undefined 
+        return person
+      })
+    }
+ 
+    return { token: null, user: undefined }
   }
 
   logOut (id) {
