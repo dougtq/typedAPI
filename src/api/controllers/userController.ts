@@ -7,7 +7,7 @@ const sUser : userService = new userService()
 
 User.get('/user/:_id', (req : Request, res : Response) => {
   res.send({
-    sucess: true
+    sucess: sUser.logIn(req.body)
   })
 })
 
