@@ -8,6 +8,8 @@
     "space-before-function-paren": [true, "always"],
     "object-literal-sort-keys": [false],
     "import-name": [false],
-    "variable-name": [true, "allow-pascal-case"]
+    "variable-name": [true, "allow-pascal-case"],
+    "no-boolean-literal-compare": false,
+    "strict-boolean-expressions": false
   }
 }
