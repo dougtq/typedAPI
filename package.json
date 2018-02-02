@@ -2,7 +2,7 @@
   "name": "typed_api",
   "main": "index.js",
   "description": "Secure, simple and well structured typed API",
-  "version": "1.2.4-beta",
+  "version": "1.3.0-beta",
   "keywords": ["ts", "mongodb"],
   "author": "Douglas Alves",
   "license": "MIT",
