@@ -8,11 +8,11 @@ RUN apk update && apk add --no-cache nodejs && rm -rf /var/cache/apk/*
 # ========================== Build Image ==========================
 FROM alpine:3.4 AS builder
 
-RUN apk update && apk add --no-cache nodejs && mkdir /todo-api
+RUN apk update && apk add --no-cache nodejs && mkdir /typed
 
-COPY ./package.json ./todo-api/package.json
+COPY ./package.json ./typed/package.json
 
-WORKDIR /todo-api
+WORKDIR /typed
 
 RUN npm install
 
@@ -23,13 +23,13 @@ RUN npm run build
 # ========================== Runtime Image ==========================
 FROM base AS runtime
 
-RUN mkdir -p /todo-api/dist
+RUN mkdir -p /typed/build
 
-COPY ./package.json ./todo-api/package.json
+COPY ./package.json ./typed/package.json
 
-WORKDIR /todo-api/
+WORKDIR /typed/
 
-COPY --from=builder /todo-api/dist ./dist/
+COPY --from=builder /typed/build ./build/
 
 RUN npm install --production
 
