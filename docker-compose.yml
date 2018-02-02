@@ -1,0 +1,18 @@
+mongo:
+  image: mongo:latest
+  container_name: "mongo"
+  ports:
+    - "27017:27017"
+  # environment:
+  #   - MONGO_DATA_DIR=/data/db
+  #   - MONGO_LOG_DIR=/dev/null
+  #   - AUTH=no
+  # command: mongod --smallfiles --logpath=/dev/null # --quiet
+api_todo:
+  build: .
+  container_name: api_todo
+  env_file: .env
+  ports:
+    - "3000:3000"
+  links:
+    - mongo
