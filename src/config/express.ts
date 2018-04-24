@@ -1,31 +1,25 @@
-import * as express from 'express'
-import * as helmet from 'helmet'
+import express = require('express')
+import helmet = require('helmet')
 import { urlencoded, json } from 'body-parser'
 
+import { getEnvValues } from './env'
 import './../helpers/folders'
 import logs from './loggify'
 import './../db/connection'
 import middlewares from './middleware'
 import loader from './../api/loader'
 
-class Server {
-  public express : express.Application
+const app = express()
+const env = getEnvValues()
 
-  constructor () {
-    this.express = express()
-    this.middleware()
-  }
+app.set('port', env.PORT || 3000)
+app.use(helmet())
+app.use([...logs, middlewares])
+app.use([urlencoded({ extended: true }), json()])
+app.use('/api', [...loader()])
 
-  private middleware(): void {
-    this.express.use([json(), urlencoded({ extended: true })])
-    this.express.use(helmet())
-    this.express.use([...logs, middlewares])
-    this.express.use('/api', [...loader()])
-    this.express.use('/health', (req: express.Request, res: express.Response, next: express.NextFunction) => {
-      res.send({ working: true })
-    })
-  }
-}
+app.listen(app.get('port'), () => {
+  console.log(`BACKEND is runing on ${app.get('port')}`)
+})
 
-
-export default new Server().express
+export default app

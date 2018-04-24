@@ -7,8 +7,7 @@ const secretKey : string = process.env.SECRET ||
 (Math.floor((Math.random() * 9999) * Math.random())).toString()
 
 export default class Token {
-  // private secretKey : string = process.env.SECRET || (Math.floor((Math.random() * 9999) * Math.random())).toString()
-
+ 
   static createToken (payload : any) : string | Error {
     try {
       const token = sign(payload, secretKey)

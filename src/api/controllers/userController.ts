@@ -14,7 +14,7 @@ User.get('/user/:_id', (req : Request, res : Response) => {
 })
 
 User.post('/user', (req : Request, res : Response) => {
-  res.status(201).send({
+  res.send({
     sucess: true,
     message: 'User account created!!'
   })

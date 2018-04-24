@@ -8,5 +8,5 @@ fse.ensureDir(dir, (err : Error) => {
     console.dir(err)
     process.exit(1)
   }
-  // dir has now been csreated, including the directory it is to be placed in
+  // dir has now been created, including the directory it is to be placed in
 })

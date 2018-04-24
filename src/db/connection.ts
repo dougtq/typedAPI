@@ -1,8 +1,8 @@
-import Mongo from 'mongoose'
+import Mongo = require('mongoose')
 
-Mongo.Promise = global.Promise
+Mongo.Promise = require('bluebird')
 
-Mongo.connect(process.env.MONGO_URI || 'mongodb://localhost/typed', {
+Mongo.connect(process.env.mongo_uri || 'mongodb://localhost/typed', {
   useMongoClient: true
 })
 

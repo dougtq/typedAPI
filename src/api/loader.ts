@@ -9,8 +9,8 @@ const getRouters = (modulos : string[]) : any[]  =>
   modulos.map((modulo) => {
     return require(`./controllers/${modulo}`).default
   })
-
-
+  
+  
 function bootstrap () {
   const modules : string[] = getModules()
   return getRouters(modules || [''])

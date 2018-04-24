@@ -3,10 +3,7 @@
   "main": "index.js",
   "description": "Secure, simple and well structured typed API",
   "version": "1.3.0-beta",
-  "keywords": [
-    "ts",
-    "mongodb"
-  ],
+  "keywords": ["ts", "mongodb"],
   "author": "Douglas Alves",
   "license": "MIT",
   "scripts": {
